@@ -12,6 +12,15 @@ long long obliczSilnie(int n) {
     return wynik;
 }
 
+// Funkcja sprawdzająca czy liczba jest pierwsza (dodana w Poleceniu 5)
+bool czyPierwsza(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
 int main() {
     int a, b;
     cout << "Podaj liczbe calkowita ";
@@ -22,14 +31,23 @@ int main() {
         cout << endl;
         cout << "MENU" << endl;
         cout << "Podaj numer czynnosci, ktora chcesz wykonac" << endl;
-        cout << "1. Oblicz silnie dla liczby a" << endl; // Nowa opcja w menu
+        cout << "1. Oblicz silnie dla liczby a" << endl;
+        cout << "2. Sprawdz czy liczba a jest pierwsza" << endl;
         cout << "0. Wyjscie" << endl;
         cin >> wyjscie;
 
-        // Obsługa wyboru użytkownika
+        // Obsługa wyboru użytkownika - połączone menu
         if (wyjscie == 1) {
             cout << "Silnia z liczby " << a << " wynosi: " << obliczSilnie(a) << endl;
-        } else if (wyjscie != 0) {
+        } 
+        else if (wyjscie == 2) {
+            if (czyPierwsza(a)) {
+                cout << "Liczba " << a << " JEST liczba pierwsza." << endl;
+            } else {
+                cout << "Liczba " << a << " NIE JEST liczba pierwsza." << endl;
+            }
+        } 
+        else if (wyjscie != 0) {
             cout << "Niepoprawny wybor!" << endl;
         }
 
